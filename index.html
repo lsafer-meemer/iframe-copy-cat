@@ -1,19 +1,21 @@
 <body>
-    <iframe src="./iframe.html" id="zIframe" ></iframe>
-    <input type="text" id="zInput" />
-    <input type="text" readonly id="zOutput" />
+    <iframe src="./iframe.html" id="zIframe"></iframe>
+    <input type="text" id="zInput"/>
+    <input type="text" readonly id="zOutput"/>
     <button onclick="onZButtonClicked()">Send</button>
 </body>
 <script>
     const zInput = document.getElementById("zInput")
     const zOutput = document.getElementById("zOutput")
-    const zIframe = document.getElementById("zIframe") 
+    const zIframe = document.getElementById("zIframe")
 
     window.addEventListener("message", event => {
-        zOutput.value = event.data       
-    }, false)
+        console.log("parent just received:", event.data)
+        zOutput.value = event.data
+        console.log("parent updated output to:", event.data)
+    })
 
     function onZButtonClicked() {
-        zIframe.contentWindow.postMessage(zInput.value)
+        zIframe.contentWindow.postMessage(zInput.value, "*")
     }
 </script>
