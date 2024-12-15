@@ -11,7 +11,7 @@
         if (event.data.type !== "demoOut")
             return
 
-        console.log("iframe just received:", event.data)
+        console.log("iframe just received:", JSON.stringify(event.data))
         zOutput.value = event.data.value
     })
 

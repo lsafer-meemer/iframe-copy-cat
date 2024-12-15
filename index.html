@@ -13,7 +13,7 @@
         if (event.data.type !== "demoIn")
             return
 
-        console.log("parent just received:", event.data)
+        console.log("parent just received:", JSON.stringify(event.data))
         zOutput.value = event.data.value
     })
 
