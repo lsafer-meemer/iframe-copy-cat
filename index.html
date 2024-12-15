@@ -9,7 +9,7 @@
     const zOutput = document.getElementById("zOutput")
     const zIframe = document.getElementById("zIframe") 
 
-    zIframe.contentWindow.addEventListener("message", event => {
+    window.addEventListener("message", event => {
         zOutput.value = event.data       
     }, false)
 
