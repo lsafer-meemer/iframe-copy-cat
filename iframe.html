@@ -8,7 +8,7 @@
     const zOutput = document.getElementById("zOutput")
 
     window.addEventListener("message", event => {
-        if (event.data.type !== "demo")
+        if (event.data.type !== "demoOut")
             return
 
         console.log("iframe just received:", event.data)
@@ -16,7 +16,7 @@
     })
 
     function onZButtonClicked() {
-        const message = {type: "demo", value: zInput.value}
+        const message = {type: "demoIn", value: zInput.value}
         window.parent.postMessage(message, "*")
     }
 </script>
