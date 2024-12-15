@@ -1,0 +1,9 @@
+<script>
+window.addEventListener(
+  "message",
+  (event) => {
+    window.opener.postMessage(event.data)
+  },
+  false,
+);
+</script>

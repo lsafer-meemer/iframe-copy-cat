@@ -1,9 +1,19 @@
+<body>
+    <iframe src="./iframe.html" id="zIframe" />
+    <input type="text" id="zInput" />
+    <input type="text" readonly id="zOutput"></p>
+    <button onclick="onZButtonClicked()">Send</button>
+</body>
 <script>
-window.addEventListener(
-  "message",
-  (event) => {
-    window.postMessage(event.data)
-  },
-  false,
-);
+    const zInput = document.getElementById("zInput")
+    const zOutput = document.getElementById("zOutput")
+    const zIframe = document.getElementById("zIframe") 
+
+    zIframe.contentWindow.addEventListener("message", event => {
+        zOutput.value = event.data       
+    }, false)
+
+    function onZButtonClicked() {
+        zIframe.contentWindow.postMessage(zInput.value)
+    }
 </script>
