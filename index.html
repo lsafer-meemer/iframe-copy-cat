@@ -10,12 +10,15 @@
     const zIframe = document.getElementById("zIframe")
 
     window.addEventListener("message", event => {
+        if (event.data.type !== "demo")
+            return
+
         console.log("parent just received:", event.data)
-        zOutput.value = event.data
-        console.log("parent updated output to:", event.data)
+        zOutput.value = event.data.value
     })
 
     function onZButtonClicked() {
-        zIframe.contentWindow.postMessage(zInput.value, "*")
+        const message = {type: "demo", value: zInput.value}
+        zIframe.contentWindow.postMessage(message, "*")
     }
 </script>
